@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, send_from_directory
 import os
 import urllib
 from keras.models import load_model
-from keras.applications import resnet50
+from keras.applications import resnet50, mobilenet, vgg19
 from keras.applications.imagenet_utils import preprocess_input, decode_predictions
 import cv2
 import numpy as np
@@ -15,15 +15,14 @@ UPLOAD = 'uploads'
 @app.route('/')
 def index():
     return render_template("index.html",
-                           title='ResNet50 Classification Demo')
+                           title='Image Classification Demo')
 
 
 @app.route('/download', methods=['POST'])
 def download_image():
     address = request.form['address']
+    modelname = request.form['modelname']
     filename = os.path.join(UPLOAD, address.split('/')[-1])
-    with open(filename, 'wb') as f:
-        f.write(urllib.urlopen(address).read())
     return predict(filename)
 
 

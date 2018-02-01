@@ -7,22 +7,41 @@
     <title>Classification Demo</title>
     {% endif %}
 </head>
+
 <body>
+
+<br><br>
 <form action="/download" method="POST">
     <fieldset>
         <legend>Image URL</legend>
+        <br>
         <input type="text" name="address"
                value="http://cdn2-www.cattime.com/assets/uploads/gallery/ragdoll/ragdoll-cats-kittens-2.jpg" size="100"><br>
-        <input type="submit" value="Submit">
+         <br>
+         <legend>Choose Your Image Classification Model</legend>
+         <input type="radio" name="modelname" value="ResNet50" checked> ResNet50 <br>
+         <input type="radio" name="modelname" value="MobileNet" > MobileNet <br>
+         <input type="radio" name="modelname" value="VGG" > VGG <br>
+         <br>
+         <br>
+         <input type="submit" value="Submit">
     </fieldset>
 </form>
 
 <br><br>
 
-<form action="/upload" method="post" enctype="multipart/form-data">
+<form action="/upload" method="POST" enctype="multipart/form-data">
     <fieldset>
-        <legend>Upload Image</legend>
-        <input type="file" name="image">
+        <br>
+        <legend>Image Path</legend>
+        <input type="radio" name="model" value="ResNet50" checked> ResNet50 <br>
+        <input type="radio" name="model" value="MobileNet" > MobileNet <br>
+        <input type="radio" name="model" value="VGG" > VGG <br>
+        <br>
+        <legend>Upload Your Image</legend>
+        <br>
+       <input type="file" name="image">
+        <br>
         <input type="submit" value="Upload your image" class="btn btn-primary">
     </fieldset>
 </form>

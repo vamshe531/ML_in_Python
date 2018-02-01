@@ -4,11 +4,13 @@
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>Classification Demo</title>
+    <title>Image Classification Results</title>
     {% endif %}
 </head>
 <body>
     <img src={{ filename }} width="224" height="224">
+    <br>
+    Model used: {{model}}
     <br>
     {% for pred in predictions %}
     {{ pred.name }} : {{ pred.prob }}
